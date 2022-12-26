@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/filmsAllFragment">
+
+    <fragment
+        android:id="@+id/filmsAllFragment"
+        android:name="com.example.sorokayassirtest.ui.main.fragment.AllFilmsFragment"
+        android:label="fragment_films_all"
+        tools:layout="@layout/fragment_all_films">
+        <action
+            android:id="@+id/action_filmsAllFragment_to_filmFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:destination="@id/filmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmFragment"
+        android:name="com.example.sorokayassirtest.ui.main.fragment.FilmFragment"
+        android:label="fragment_film"
+        tools:layout="@layout/fragment_film" >
+        <argument
+            android:name="film"
+            app:argType="string" />
+    </fragment>
+</navigation>

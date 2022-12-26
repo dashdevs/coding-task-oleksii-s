@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="?colorSurface"
+    app:cardCornerRadius="8dp"
+    app:strokeColor="@color/purple_700"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_film_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:elevation="0dp"
+            android:maxWidth="140dp"
+            android:padding="2dp"
+            android:src="@drawable/film_icon_example"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_film_vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:textColor="?ratingScoreIconColor"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_star"
+            app:drawableTint="?ratingScoreIconColor"
+            app:layout_constraintBottom_toTopOf="@+id/tv_film_title"
+            app:layout_constraintStart_toEndOf="@+id/iv_film_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="8.5" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_film_vote_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:drawablePadding="4dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:textColor="?thumbUpIconColor"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_thumb_up"
+            app:drawableTint="?thumbUpIconColor"
+            app:layout_constraintTop_toTopOf="@+id/tv_film_vote"
+            app:layout_constraintStart_toEndOf="@+id/tv_film_vote"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_film_vote"
+            tools:text="8555555" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_film_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_film_date_release"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_film_logo"
+            app:layout_constraintTop_toBottomOf="@+id/tv_film_vote_count"
+            tools:text="Aquamen" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_film_date_release"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_film_logo"
+            app:layout_constraintTop_toBottomOf="@+id/tv_film_title"
+            tools:text="23 Sep 2021"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
