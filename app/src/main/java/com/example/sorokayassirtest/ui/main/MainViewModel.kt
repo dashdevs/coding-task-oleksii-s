@@ -6,18 +6,18 @@ import androidx.paging.InvalidatingPagingSourceFactory
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.example.sorokayassirtest.domain.FilmsRepository
+import com.example.sorokayassirtest.domain.MoviesRepository
 import com.example.sorokayassirtest.ui.main.adapter.pagination.MoviesItemDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val filmsRepository: FilmsRepository) : ViewModel() {
+class MainViewModel @Inject constructor(private val moviesRepository: MoviesRepository) : ViewModel() {
 
     private val PAGE_SIZE = 20
 
     private val pagingSourceFactory = InvalidatingPagingSourceFactory {
-        MoviesItemDataSource(filmsRepository)
+        MoviesItemDataSource(moviesRepository)
     }
 
     val filmsFlow = Pager(

@@ -3,12 +3,12 @@ package com.example.sorokayassirtest.ui.main.adapter.pagination
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.sorokayassirtest.data.net.adapter.DomainModel
-import com.example.sorokayassirtest.domain.FilmsRepository
+import com.example.sorokayassirtest.domain.MoviesRepository
 import com.example.sorokayassirtest.domain.entity.LoadStatus
 import com.example.sorokayassirtest.domain.entity.Movie
 import javax.inject.Inject
 
-class MoviesItemDataSource @Inject constructor(private val filmsRepository: FilmsRepository) : PagingSource<Int, Movie>() {
+class MoviesItemDataSource @Inject constructor(private val moviesRepository: MoviesRepository) : PagingSource<Int, Movie>() {
 
     companion object {
         private const val STARTING_PAGE_INDEX = 1
@@ -18,7 +18,7 @@ class MoviesItemDataSource @Inject constructor(private val filmsRepository: Film
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val position = params.key ?: STARTING_PAGE_INDEX
-        return when (val result = filmsRepository.getFilmsList(position)) {
+        return when (val result = moviesRepository.getFilmsList(position)) {
             is LoadStatus.Error -> {
                 LoadResult.Error(result.e)
             }

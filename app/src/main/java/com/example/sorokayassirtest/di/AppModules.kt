@@ -5,7 +5,7 @@ import com.example.sorokayassirtest.data.MoviesRepositoryImpl
 import com.example.sorokayassirtest.data.net.MovieApi
 import com.example.sorokayassirtest.data.net.interceptor.ApiAuthInterceptor
 import com.example.sorokayassirtest.data.net.moshi
-import com.example.sorokayassirtest.domain.FilmsRepository
+import com.example.sorokayassirtest.domain.MoviesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,9 +27,7 @@ object AppModules {
      */
     @Singleton
     @Provides
-    fun provideRepository(
-        api: MovieApi
-    ) = MoviesRepositoryImpl(api) as FilmsRepository
+    fun provideRepository(api: MovieApi) = MoviesRepositoryImpl(api) as MoviesRepository
 
     /**
      * DI function that provides the retrofit client object.
