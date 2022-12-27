@@ -4,32 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.fragment.AllFilmsFragment">
+    tools:context=".ui.main.fragment.AllMoviesFragment">
 
     <include
-        android:id="@+id/empty_list_error"
-        layout="@layout/include_empty_list"
+        android:id="@+id/info_items"
+        layout="@layout/include_error_loading_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="invisible"
-        tools:visibility="invisible" />
+        android:visibility="invisible"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbarThumbVertical="@drawable/sroll_bar_color"
-            android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_film" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
+        android:layout_height="match_parent"
+        android:scrollbarThumbVertical="@drawable/sroll_bar_color"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_movie" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/ib_scroll_up"

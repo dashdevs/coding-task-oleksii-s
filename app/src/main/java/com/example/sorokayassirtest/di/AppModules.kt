@@ -1,18 +1,14 @@
 package com.example.sorokayassirtest.di
 
-import android.content.Context
 import com.example.sorokayassirtest.BuildConfig
-import com.example.sorokayassirtest.data.FilmsRepositoryImpl
-import com.example.sorokayassirtest.data.net.FilmApi
+import com.example.sorokayassirtest.data.MoviesRepositoryImpl
+import com.example.sorokayassirtest.data.net.MovieApi
 import com.example.sorokayassirtest.data.net.interceptor.ApiAuthInterceptor
 import com.example.sorokayassirtest.data.net.moshi
-import com.example.sorokayassirtest.data.prefs.PreferencesAPI
 import com.example.sorokayassirtest.domain.FilmsRepository
-import com.example.sorokayassirtest.domain.usecase.MainActivityUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,39 +23,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModules {
     /**
-     * Creates an instance of [PreferencesAPI]
-     */
-    @Singleton
-    @Provides
-    fun providePreferencesAPI(
-        @ApplicationContext context: Context
-    ) = PreferencesAPI(context)
-
-    /**
-     * Creates an instance of [FilmsRepositoryImpl]
+     * Creates an instance of [MoviesRepositoryImpl]
      */
     @Singleton
     @Provides
     fun provideRepository(
-        prefs: PreferencesAPI,
-        api: FilmApi
-    ) = FilmsRepositoryImpl(prefs, api) as FilmsRepository
-
-    /**
-     * Creates an instance of [MainActivityUseCase]
-     */
-    @Singleton
-    @Provides
-    fun provideMainActivityUseCase(
-        filmsRepository: FilmsRepository
-    ) = MainActivityUseCase(filmsRepository)
+        api: MovieApi
+    ) = MoviesRepositoryImpl(api) as FilmsRepository
 
     /**
      * DI function that provides the retrofit client object.
      */
     @Singleton
     @Provides
-    fun provideFilmApi(): FilmApi {
+    fun provideFilmApi(): MovieApi {
         val okHttpClientBuilder = OkHttpClient.Builder()
         okHttpClientBuilder.addInterceptor(ApiAuthInterceptor())
 
@@ -74,6 +51,6 @@ object AppModules {
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .build()
-            .create(FilmApi::class.java)
+            .create(MovieApi::class.java)
     }
 }

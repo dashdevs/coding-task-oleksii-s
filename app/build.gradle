@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -62,12 +63,13 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.12.0'
+    implementation 'se.ansman.kotshi:api:2.9.0'
+    kapt 'se.ansman.kotshi:compiler:2.9.0'
 
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
-
-    implementation("se.ansman.kotshi:api:2.9.0")
-    kapt("se.ansman.kotshi:compiler:2.9.0")
+    //Pagination
+    implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
 
     // Dagger hilt
     implementation "com.google.dagger:hilt-android:2.40.1"
