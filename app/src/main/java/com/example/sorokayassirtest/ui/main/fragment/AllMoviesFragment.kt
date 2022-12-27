@@ -91,7 +91,6 @@ class AllMoviesFragment : Fragment(), ItemClickListener {
     private fun updateLoadingUIState(isLoading: Boolean) {
         binding.apply {
             recyclerView.isVisible = !isLoading
-            ibScrollUp.isVisible = !isLoading
             infoItems.root.isVisible = isLoading
         }
     }
